@@ -90,4 +90,9 @@ public class Car {
         else
             throw new IllegalArgumentException("valid transmissions are: "+transmissions);
     }
+
+    public String toString()
+    {
+        return String.format("%d %s %s", modelYear,make,model);
+    }
 }
