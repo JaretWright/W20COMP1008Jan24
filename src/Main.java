@@ -34,6 +34,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("CardView.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Super awesome GUI viewer thingy...");
         primaryStage.show();
     }
 }
