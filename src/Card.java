@@ -1,3 +1,5 @@
+import javafx.scene.image.Image;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,6 +9,7 @@ public class Card {
     //They are marked as private so that ONLY the card class can control how they are
     //set
     private String faceName, suit;
+    private Image cardImage;
 
     /**
      * This is the constructor.  It's goal is to validate the arguments and set
@@ -17,6 +20,12 @@ public class Card {
     public Card(String faceName, String suit) {
         setFaceName(faceName);
         setSuit(suit);
+        String imageLocation = "./images/"+faceName+"_of_"+suit+".png";
+        cardImage = new Image(imageLocation);
+    }
+
+    public Image getCardImage() {
+        return cardImage;
     }
 
     public String getFaceName() {
