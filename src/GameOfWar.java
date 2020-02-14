@@ -70,38 +70,37 @@ public class GameOfWar {
      */
     public void playHand(ArrayList<Card> pile)
     {
-        Card p1Card = p1Hand.get(0);
-        Card p2Card = p2Hand.get(0);
+        if (p1Hand.size()>0 && p2Hand.size()>0) {
+            Card p1Card = p1Hand.get(0);
+            Card p2Card = p2Hand.get(0);
 
-        pile.add(p1Hand.remove(0));
-        pile.add(p2Hand.remove(0));
+            pile.add(p1Hand.remove(0));
+            pile.add(p2Hand.remove(0));
 
-        if (p1Card.getFaceValue()>p2Card.getFaceValue())
-            p1Hand.addAll(pile);
-
-        else if (p2Card.getFaceValue()>p1Card.getFaceValue())
-            p2Hand.addAll(pile);
-
-        else
-        {
-            if (getP1CardCount()<4)  //p1 doesn't have enough cards for War
-            {
-                p2Hand.addAll(p1Hand);
-                p2Hand.addAll(pile);
-                p1Hand.clear();
-            }
-            else if (getP2CardCount()<4) //p2 doesn't have enough cards for War
-            {
-                p1Hand.addAll(p2Hand);
+            if (p1Card.getFaceValue() > p2Card.getFaceValue())
                 p1Hand.addAll(pile);
-                p2Hand.clear();
-            }
+
+            else if (p2Card.getFaceValue() > p1Card.getFaceValue())
+                p2Hand.addAll(pile);
+
             else {
-                for (int i = 1; i <= 3; i++) {
-                    pile.add(p1Hand.remove(0));
-                    pile.add(p2Hand.remove(0));
+                if (getP1CardCount() < 4)  //p1 doesn't have enough cards for War
+                {
+                    p2Hand.addAll(p1Hand);
+                    p2Hand.addAll(pile);
+                    p1Hand.clear();
+                } else if (getP2CardCount() < 4) //p2 doesn't have enough cards for War
+                {
+                    p1Hand.addAll(p2Hand);
+                    p1Hand.addAll(pile);
+                    p2Hand.clear();
+                } else {
+                    for (int i = 1; i <= 3; i++) {
+                        pile.add(p1Hand.remove(0));
+                        pile.add(p2Hand.remove(0));
+                    }
+                    playHand(pile);
                 }
-                playHand(pile);
             }
         }
     }

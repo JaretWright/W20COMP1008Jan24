@@ -33,7 +33,7 @@
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" text="Play Hand">
+                  <Button mnemonicParsing="false" onAction="#playHandButtonPushed" text="Play Hand">
                      <font>
                         <Font size="30.0" />
                      </font>
